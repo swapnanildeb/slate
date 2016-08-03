@@ -1,189 +1,127 @@
----
-title: API Reference
+# BlockApps API v1.2 API documentation version v1.2
+http://hacknet.blockapps.net/eth/v1.2
 
-language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
-
-search: true
 ---
 
-# Introduction
+## /faucet
+handler: FaucetR
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+### /faucet
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+* **post**: Claim ether from the faucet
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+## /extabi
+handler: ExtABIR
 
-# Authentication
+### /extabi
 
-> To authorize, use this code:
+* **post**: Get the symbol table associated with a solidity source file.
 
-```ruby
-require 'kittn'
+## /stats
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+### /stats/difficulty
+handler: StatDiffR
 
-```python
-import kittn
+* **get**: Get the current total difficulty on the blockchain
 
-api = kittn.authorize('meowmeowmeow')
-```
+### /stats/totaltx
+handler: StatTxR
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+* **get**: Get the current total number of transactions on the blockchain
 
-```javascript
-const kittn = require('kittn');
+## /block
+handler: BlockInfoR
 
-let api = kittn.authorize('meowmeowmeow');
-```
+### /block
 
-> Make sure to replace `meowmeowmeow` with your API key.
+* **get**: Query the blocks
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+### /block/last/{Integer}
+handler: BlkLastR
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+* **get**: Get the last number of blocks
 
-`Authorization: meowmeowmeow`
+## /log
+handler: LogInfoR
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+### /log
 
-# Kittens
+* **get**: Query logs
 
-## Get All Kittens
+## /account
+handler: AccountInfoR
 
-```ruby
-require 'kittn'
+### /account
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+* **get**: Query the accounts
 
-```python
-import kittn
+## /transaction
+handler: TransactionR
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+### /transaction
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+* **get**: Query the transaction
+* **post**: 
+* **options**: 
 
-```javascript
-const kittn = require('kittn');
+### /transaction/last/{Integer}
+handler: TxLastR
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+* **get**: Get the last number of transactions
 
-> The above command returns JSON structured like this:
+### /transaction/last/queued
+handler: QueuedTransactionsR
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
+* **get**: Get queued (unprocessed) transactions
 
-This endpoint retrieves all kittens.
+## /transactionResult
 
-### HTTP Request
+### /transactionResult/{SHA}
+handler: TransactionResultR
 
-`GET http://example.com/api/kittens`
+* **get**: Get the status of a transaction by the SHA
 
-### Query Parameters
+## /storage
+handler: StorageInfoR
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+### /storage
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+* **get**: Query the storage
 
-## Get a Specific Kitten
+## /register
+handler: RegisterAppR
 
-```ruby
-require 'kittn'
+### /register
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+* **get**: Confirm that the developer registered an app.
+* **post**: Register a new application.
 
-```python
-import kittn
+## /login
+handler: LoginR
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+### /login
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+* **post**: 
 
-```javascript
-const kittn = require('kittn');
+## /wallet
+handler: WalletR
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+### /wallet
 
-> The above command returns JSON structured like this:
+* **get**: 
+* **post**: 
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+## /developer
+handler: DeveloperR
 
-This endpoint retrieves a specific kitten.
+### /developer
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+* **post**: 
 
-### HTTP Request
+## /coinbase
+handler: CoinbaseR
 
-`GET http://example.com/kittens/<ID>`
+### /coinbase
 
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+* **get**: Get the mining coinbase of the
 
