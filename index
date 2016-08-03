@@ -1,0 +1,181 @@
+<h1 id="blockapps-api-v1-2-api-documentation-version-v1-2">BlockApps API v1.2 API documentation version v1.2</h1>
+
+<p>http://hacknet.blockapps.net/eth/v1.2</p>
+
+<hr>
+
+<h2 id="faucet">/faucet</h2>
+
+<p>handler: FaucetR</p>
+
+<h3 id="faucet">/faucet</h3>
+
+<ul>
+<li><strong>post</strong>: Claim ether from the faucet</li>
+</ul>
+
+<h2 id="extabi">/extabi</h2>
+
+<p>handler: ExtABIR</p>
+
+<h3 id="extabi">/extabi</h3>
+
+<ul>
+<li><strong>post</strong>: Get the symbol table associated with a solidity source file.</li>
+</ul>
+
+<h2 id="stats">/stats</h2>
+
+<h3 id="stats-difficulty">/stats/difficulty</h3>
+
+<p>handler: StatDiffR</p>
+
+<ul>
+<li><strong>get</strong>: Get the current total difficulty on the blockchain</li>
+</ul>
+
+<h3 id="stats-totaltx">/stats/totaltx</h3>
+
+<p>handler: StatTxR</p>
+
+<ul>
+<li><strong>get</strong>: Get the current total number of transactions on the blockchain</li>
+</ul>
+
+<h2 id="block">/block</h2>
+
+<p>handler: BlockInfoR</p>
+
+<h3 id="block">/block</h3>
+
+<ul>
+<li><strong>get</strong>: Query the blocks</li>
+</ul>
+
+<h3 id="block-last-integer">/block/last/{Integer}</h3>
+
+<p>handler: BlkLastR</p>
+
+<ul>
+<li><strong>get</strong>: Get the last number of blocks</li>
+</ul>
+
+<h2 id="log">/log</h2>
+
+<p>handler: LogInfoR</p>
+
+<h3 id="log">/log</h3>
+
+<ul>
+<li><strong>get</strong>: Query logs</li>
+</ul>
+
+<h2 id="account">/account</h2>
+
+<p>handler: AccountInfoR</p>
+
+<h3 id="account">/account</h3>
+
+<ul>
+<li><strong>get</strong>: Query the accounts</li>
+</ul>
+
+<h2 id="transaction">/transaction</h2>
+
+<p>handler: TransactionR</p>
+
+<h3 id="transaction">/transaction</h3>
+
+<ul>
+<li><strong>get</strong>: Query the transaction</li>
+<li><strong>post</strong>: </li>
+<li><strong>options</strong>: </li>
+</ul>
+
+<h3 id="transaction-last-integer">/transaction/last/{Integer}</h3>
+
+<p>handler: TxLastR</p>
+
+<ul>
+<li><strong>get</strong>: Get the last number of transactions</li>
+</ul>
+
+<h3 id="transaction-last-queued">/transaction/last/queued</h3>
+
+<p>handler: QueuedTransactionsR</p>
+
+<ul>
+<li><strong>get</strong>: Get queued (unprocessed) transactions</li>
+</ul>
+
+<h2 id="transactionresult">/transactionResult</h2>
+
+<h3 id="transactionresult-sha">/transactionResult/{SHA}</h3>
+
+<p>handler: TransactionResultR</p>
+
+<ul>
+<li><strong>get</strong>: Get the status of a transaction by the SHA</li>
+</ul>
+
+<h2 id="storage">/storage</h2>
+
+<p>handler: StorageInfoR</p>
+
+<h3 id="storage">/storage</h3>
+
+<ul>
+<li><strong>get</strong>: Query the storage</li>
+</ul>
+
+<h2 id="register">/register</h2>
+
+<p>handler: RegisterAppR</p>
+
+<h3 id="register">/register</h3>
+
+<ul>
+<li><strong>get</strong>: Confirm that the developer registered an app.</li>
+<li><strong>post</strong>: Register a new application.</li>
+</ul>
+
+<h2 id="login">/login</h2>
+
+<p>handler: LoginR</p>
+
+<h3 id="login">/login</h3>
+
+<ul>
+<li><strong>post</strong>: </li>
+</ul>
+
+<h2 id="wallet">/wallet</h2>
+
+<p>handler: WalletR</p>
+
+<h3 id="wallet">/wallet</h3>
+
+<ul>
+<li><strong>get</strong>: </li>
+<li><strong>post</strong>: </li>
+</ul>
+
+<h2 id="developer">/developer</h2>
+
+<p>handler: DeveloperR</p>
+
+<h3 id="developer">/developer</h3>
+
+<ul>
+<li><strong>post</strong>: </li>
+</ul>
+
+<h2 id="coinbase">/coinbase</h2>
+
+<p>handler: CoinbaseR</p>
+
+<h3 id="coinbase">/coinbase</h3>
+
+<ul>
+<li><strong>get</strong>: Get the mining coinbase of the</li>
+</ul>
