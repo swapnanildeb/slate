@@ -1,0 +1,856 @@
+
+
+# BlockApps API v1.2 API documentation <small>version v1.2</small>
+
+http://hacknet.blockapps.net/eth/v1.2
+### /faucet
+
+handler: FaucetR
+
+
+
+#### [<span class="parent"></span>/faucet](#panel_faucet) <span class="methods">[<span class="badge badge_post">post</span>](#faucet_post)</span>
+
+
+
+Claim ether from the faucet
+
+
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/faucet
+
+
+Claim ether from the faucet
+
+*   [Request](#faucet_post_request)
+
+
+### Query Parameters
+
+*   **address**: _required (string)_
+
+    the hex encoded address
+
+*   **responses**: _(string)_
+
+### /extabi
+
+
+
+handler: ExtABIR
+
+
+
+#### [<span class="parent"></span>/extabi](#panel_extabi) <span class="methods">[<span class="badge badge_post">post</span>](#extabi_post)</span>
+
+
+
+Get the symbol table associated with a solidity source file.
+
+
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/extabi
+
+
+
+Get the symbol table associated with a solidity source file.
+
+
+
+*   [Request](#extabi_post_request)
+
+
+
+### Query Parameters
+
+*   **src**: _(string)_
+
+    a solidity source main file
+
+    **Example**:
+
+    <pre>src=contract C{}</pre>
+
+*   **main**: _(file - repeat: true)_
+
+    a solidity source main file
+
+*   **import**: _(file - repeat: true)_
+
+    a solidity source file imported by a main file
+
+*   **responses**: _(string)_
+
+
+### /stats
+
+
+
+#### [<span class="parent">/stats</span>/difficulty](#panel_stats_difficulty) <span class="methods">[<span class="badge badge_get">get</span>](#stats_difficulty_get)</span>
+
+
+handler: StatDiffR
+
+
+Get the current total difficulty on the blockchain
+
+
+
+#### <span class="badge badge_get">get</span> <span class="parent">/stats</span>/difficulty
+
+
+Get the current total difficulty on the blockchain
+
+
+#### [<span class="parent">/stats</span>/totaltx](#panel_stats_totaltx) <span class="methods">[<span class="badge badge_get">get</span>](#stats_totaltx_get)</span>
+
+
+
+handler: StatTxR
+
+
+
+Get the current total number of transactions on the blockchain
+
+
+
+#### <span class="badge badge_get">get</span> <span class="parent">/stats</span>/totaltx
+
+
+
+Get the current total number of transactions on the blockchain
+
+
+
+### /block
+
+
+handler: BlockInfoR
+
+
+#### [<span class="parent"></span>/block](#panel_block) <span class="methods">[<span class="badge badge_get">get</span>](#block_get)</span>
+
+
+Query the blocks
+
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/block
+
+
+Query the blocks
+
+
+*   [Request](#block_get_request)
+*   [Response](#block_get_response)
+
+
+### Query Parameters
+
+*   **index**: _(integer)_
+
+    Block number to offset from
+
+    **Example**:
+
+        101
+
+*   **number**: _(integer)_
+
+    The block number
+
+    **Example**:
+
+        445
+
+*   **minnumber**: _(integer)_
+
+    The minimum block number
+
+    **Example**:
+
+        40
+
+*   **maxnumber**: _(integer)_
+
+    The maximum block number
+
+    **Example**:
+
+        40
+
+*   **gaslim**: _(integer)_
+
+    Gaslimit for block
+
+    **Example**:
+
+        210000
+
+*   **mingaslim**: _(integer)_
+
+    Minimum gaslimit for block
+
+    **Example**:
+
+        2100
+
+*   **maxgaslim**: _(integer)_
+
+    Maximum gaslimit for block
+
+    **Example**:
+
+        990810000
+
+*   **gasused**: _(integer)_
+
+    Gas used for block
+
+    **Example**:
+
+        11242342
+
+*   **mingasused**: _(integer)_
+
+    Minumum as used for block
+
+    **Example**:
+
+        12342
+
+*   **maxgasused**: _(integer)_
+
+    Maximum gas used for block
+
+    **Example**:
+
+        99942342
+
+*   **diff**: _(integer)_
+
+    Block difficulty
+
+    **Example**:
+
+        14000
+
+*   **mindiff**: _(integer)_
+
+    Minimum block difficulty
+
+    **Example**:
+
+        1200
+
+*   **maxdiff**: _(integer)_
+
+    Maximum block difficulty
+
+    **Example**:
+
+        12129000
+
+*   **txaddress**: _(string)_
+
+    TODO
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+*   **address**: _(string)_
+
+    Block contains address
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+*   **hash**: _(string)_
+
+    The hash of the block
+
+    **Example**:
+
+    <pre>6863988e8c04f26b46dad756045f8f619cdf75bb58bc8d3e95ae3067b7e47adf</pre>
+
+*   **coinbase**: _(string)_
+
+    The address that mined the block
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+
+## HTTP status code [200](http://httpstatus.es/200)
+
+### Body
+
+**Type: application/json**
+
+**Example**:
+
+<pre>    `{
+  "next": "/query/block?index=1&number=0",
+  "kind":"Block",
+  "blockUncles":[],
+  "receiptTransactions":[],
+  "blockData": {
+    "extraData":8021325944645810444600318958160784541777644290714340452591235899924003128058,
+    "gasUsed":0,"gasLimit":5000,
+    "kind":"BlockData",
+    "unclesHash":"1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "mixHash":"0000000000000000000000000000000000000000000000000000000000000000",
+    "receiptsRoot":"56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "number":0,
+    "difficulty":17179869184,
+    "timestamp":"1970-01-01T00:00:00.000Z",
+    "coinbase":"0",
+    "parentHash":"0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce":66,
+    "stateRoot":"d7f8974fb5ac78d9ac099b9ad5018bedc2ce0a72dad1827a1709da30580f0544",
+    "transactionsRoot":"56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"}
+  }
+}` 
+</pre>
+
+#### [<span class="parent">/block/last</span>/{Integer}](#panel_block_last__Integer_) <span class="methods">[<span class="badge badge_get">get</span>](#block_last__Integer__get)</span>
+
+
+handler: BlkLastR
+
+Get the last number of blocks
+
+
+#### <span class="badge badge_get">get</span> <span class="parent">/block/last</span>/{Integer}
+
+
+Get the last number of blocks
+
+*   [Request](#block_last__Integer__get_request)
+
+### URI Parameters
+
+*   **Integer**: _required (string)_
+
+
+### /log
+
+
+handler: LogInfoR
+
+
+#### [<span class="parent"></span>/log](#panel_log) <span class="methods">[<span class="badge badge_get">get</span>](#log_get)</span>
+
+Query logs
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/log
+
+Query logs
+
+*   [Request](#log_get_request)
+
+
+### Query Parameters
+
+*   **index**: _(integer)_
+
+    Tabular index offset
+
+    **Example**:
+
+        7
+
+*   **hash**: _(integer)_
+
+    Transaction hash
+
+    **Example**:
+
+        6863988e8c04f26b46dad756045f8f619cdf75bb58bc8d3e95ae3067b7e47adf
+
+*   **address**: _(string)_
+
+    The address associated with the log
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+### /account
+
+handler: AccountInfoR
+
+#### [<span class="parent"></span>/account](#panel_account) <span class="methods">[<span class="badge badge_get">get</span>](#account_get)</span>
+
+Query the accounts
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/account
+
+Query the accounts
+
+*   [Request](#account_get_request)
+
+### Query Parameters
+
+*   **index**: _(string)_
+
+    Lexigraphical index for address. Results are offset from this value.
+
+    **Example**:
+
+    <pre>14ab</pre>
+
+*   **balance**: _(integer)_
+
+    The balance of the account in wei
+
+    **Example**:
+
+        2320000000
+
+*   **minbalance**: _(integer)_
+
+    The minimum balance of the account in wei
+
+    **Example**:
+
+        23200
+
+*   **maxbalance**: _(integer)_
+
+    The maximumbalance of the account in wei
+
+    **Example**:
+
+        999999999999
+
+*   **nonce**: _(integer)_
+
+    The nonce, denoting the number of times the address has been invoked
+
+    **Example**:
+
+        100
+
+*   **minnonce**: _(integer)_
+
+    The minimum nonce, denoting the number of times the address has been invoked
+
+*   **maxnonce**: _(integer)_
+
+    The maximum nonce, denoting the number of times the address has been invoked
+
+    **Example**:
+
+        123513
+
+*   **address**: _(string)_
+
+    The address of the account
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+### /transaction
+
+handler: TransactionR
+
+#### [<span class="parent"></span>/transaction](#panel_transaction) <span class="methods">[<span class="badge badge_get">get</span>](#transaction_get) [<span class="badge badge_post">post</span>](#transaction_post) [<span class="badge badge_options">options</span>](#transaction_options)</span>
+
+Query the transaction
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/transaction
+
+Query the transaction
+
+*   [Request](#transaction_get_request)
+
+### Query Parameters
+
+*   **index**: _(integer)_
+
+    Transactions are offset from this block number
+
+    **Example**:
+
+        10123
+
+*   **blocknumber**: _(integer)_
+
+    The blocknumber for the transaction
+
+    **Example**:
+
+        11235
+
+*   **from**: _(string)_
+
+    Transactions from this address
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+*   **to**: _(string)_
+
+    Transactions to this address
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+*   **address**: _(string)_
+
+    Transactions from or to this address
+
+    **Example**:
+
+    <pre>15de68788d01b2504df8234cb4721c54ed567305</pre>
+
+*   **value**: _(integer)_
+
+    The value transmitted by the transaction
+
+    **Example**:
+
+        12314
+
+*   **minvalue**: _(integer)_
+
+    The minimum value transmitted by the transaction
+
+    **Example**:
+
+        123
+
+*   **maxvalue**: _(integer)_
+
+    The maximum value transmitted by the transaction
+
+    **Example**:
+
+        12123314
+
+*   **gasprice**: _(integer)_
+
+    The gasprice for this transaction
+
+    **Example**:
+
+        210000
+
+*   **mingasprice**: _(integer)_
+
+    The minimum gasprice for this transaction
+
+    **Example**:
+
+        210
+
+*   **maxgasprice**: _(integer)_
+
+    The maximum gasprice for this transaction
+
+    **Example**:
+
+        210000000
+
+*   **gaslimit**: _(integer)_
+
+    The gaslimit set for this transaction
+
+    **Example**:
+
+        21000
+
+*   **mingaslimit**: _(integer)_
+
+    The minimum gaslimit for this transaction
+
+    **Example**:
+
+        10000
+
+*   **maxgaslimit**: _(integer)_
+
+    The maximum gaslimit for this transaction
+
+    **Example**:
+
+        21000000
+
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/transaction
+
+#### <span class="badge badge_options">options</span> <span class="parent"></span>/transaction
+
+#### [<span class="parent">/transaction/last</span>/{Integer}](#panel_transaction_last__Integer_) <span class="methods">[<span class="badge badge_get">get</span>](#transaction_last__Integer__get)</span>
+
+handler: TxLastR
+
+Get the last number of transactions
+
+#### <span class="badge badge_get">get</span> <span class="parent">/transaction/last</span>/{Integer}
+
+Get the last number of transactions
+
+*   [Request](#transaction_last__Integer__get_request)
+
+### URI Parameters
+
+*   **Integer**: _required (string)_
+
+#### [<span class="parent">/transaction/last</span>/queued](#panel_transaction_last_queued) <span class="methods">[<span class="badge badge_get">get</span>](#transaction_last_queued_get)</span>
+
+handler: QueuedTransactionsR
+
+Get queued (unprocessed) transactions
+
+#### <span class="badge badge_get">get</span> <span class="parent">/transaction/last</span>/queued
+
+Get queued (unprocessed) transactions
+
+### /transactionResult
+
+#### [<span class="parent">/transactionResult</span>/{SHA}](#panel_transactionResult__SHA_) <span class="methods">[<span class="badge badge_get">get</span>](#transactionResult__SHA__get)</span>
+
+handler: TransactionResultR
+
+Get the status of a transaction by the SHA
+
+#### <span class="badge badge_get">get</span> <span class="parent">/transactionResult</span>/{SHA}
+
+Get the status of a transaction by the SHA
+
+
+*   [Request](#transactionResult__SHA__get_request)
+
+### URI Parameters
+
+*   **SHA**: _required (string)_
+
+### /storage
+
+handler: StorageInfoR
+
+#### [<span class="parent"></span>/storage](#panel_storage) <span class="methods">[<span class="badge badge_get">get</span>](#storage_get)</span>
+
+Query the storage
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/storage
+
+Query the storage
+
+### /register
+
+handler: RegisterAppR
+
+#### [<span class="parent"></span>/register](#panel_register) <span class="methods">[<span class="badge badge_get">get</span>](#register_get) [<span class="badge badge_post">post</span>](#register_post)</span>
+
+Confirm that the developer registered an app.
+
+Register a new application.
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/register
+
+Confirm that the developer registered an app.
+
+*   [Request](#register_get_request)
+
+### Query Parameters
+
+*   **p**: _required (string)_
+
+    unique id sent the developer in an email.
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/register
+
+Register a new application.
+
+*   [Request](#register_post_request)
+
+
+### Query Parameters
+
+*   **app**: _required (string)_
+
+    the name of the application being registered.
+
+*   **developer**: _required (string)_
+
+    the name of the developer.
+
+*   **email**: _required (string)_
+
+    the developer's email. This acts, in practice, as the developer's unique id.
+
+*   **appurl**: _required (string)_
+
+    the URL of the app.
+
+*   **repourl**: _(string)_
+
+    the repo of the app.
+
+*   **loginpass**: _required (string)_
+
+    the password associated with the developer account.
+
+### /login
+
+handler: LoginR
+
+#### [<span class="parent"></span>/login](#panel_login) <span class="methods">[<span class="badge badge_post">post</span>](#login_post)</span>
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/login
+
+### /wallet
+
+handler: WalletR
+
+#### [<span class="parent"></span>/wallet](#panel_wallet) <span class="methods">[<span class="badge badge_get">get</span>](#wallet_get) [<span class="badge badge_post">post</span>](#wallet_post)</span>
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/wallet
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/wallet
+
+### /developer
+
+handler: DeveloperR
+
+#### [<span class="parent"></span>/developer](#panel_developer) <span class="methods">[<span class="badge badge_post">post</span>](#developer_post)</span>
+
+
+#### <span class="badge badge_post">post</span> <span class="parent"></span>/developer
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="panel panel-default">
+
+<div class="panel-heading">
+
+### /coinbase
+
+</div>
+
+<div class="panel-body">
+
+<div class="top-resource-description">
+
+handler: CoinbaseR
+
+</div>
+
+<div class="panel-group">
+
+<div class="panel panel-white">
+
+<div class="panel-heading">
+
+#### [<span class="parent"></span>/coinbase](#panel_coinbase) <span class="methods">[<span class="badge badge_get">get</span>](#coinbase_get)</span>
+
+</div>
+
+<div class="panel-collapse collapse" id="panel_coinbase">
+
+<div class="panel-body">
+
+<div class="list-group">
+
+<div class="list-group-item" onclick="window.location.href = '#coinbase_get'"><span class="badge badge_get">get</span>
+
+<div class="method_description">
+
+Get the mining coinbase of the
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="modal fade" id="coinbase_get" tabindex="0">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header"><button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+
+#### <span class="badge badge_get">get</span> <span class="parent"></span>/coinbase
+
+</div>
+
+<div class="modal-body">
+
+<div class="alert alert-info">
+
+Get the mining coinbase of the
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="hidden-print affix" id="sidebar" role="complementary">
+
+*   [/faucet](#faucet)
+*   [/extabi](#extabi)
+*   [/stats](#stats)
+*   [/block](#block)
+*   [/log](#log)
+*   [/account](#account)
+*   [/transaction](#transaction)
+*   [/transactionResult](#transactionResult)
+*   [/storage](#storage)
+*   [/register](#register)
+*   [/login](#login)
+*   [/wallet](#wallet)
+*   [/developer](#developer)
+*   [/coinbase](#coinbase)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
